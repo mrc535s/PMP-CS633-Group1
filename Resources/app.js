@@ -1,0 +1,143 @@
+// this sets the background color of the master UIView (when there are no windows/tab groups on it)
+Titanium.UI.setBackgroundColor('#000');
+
+// create tab group
+var tabGroup = Titanium.UI.createTabGroup();
+
+
+//
+// create base UI tab and root window
+//
+var win1 = Titanium.UI.createWindow({  
+    title:'PMP Fundamentals',
+    backgroundColor:'#fff',
+    height: Ti.UI.SIZE
+    
+});
+var tab1 = Titanium.UI.createTab({  
+    icon:'images/home.png',
+    title:'Home',
+    window:win1,
+    height: Ti.UI.SIZE
+    //height:650
+});
+
+	if (Ti.Platform.name == 'android') 
+	{
+		win1.backgroundColor = '#4e5c4d';
+	}
+	else
+	{
+		win1.backgroundColor = '#E0EEEE';
+	}
+	// create table view data object
+	var data = [
+		{title:'Initiating', hasChild:true, test:'common/initiating', header:'Process Groups'},
+		{title:'Planning', hasChild:true, test:'common/initiating'},
+		{title:'Executing', hasChild:true, test:'common/initiating'},
+		{title:'Monitoring/Controlling', hasChild:true, test:'common/initiating'},
+		{title:'Closing', hasChild:true, test:'common/initiating'},
+		{title:'Glossary', hasChild:true, test:'common/initiating', header:'More Information'},
+		{title:'Process Images', hasChild:true, test:'common/initiating'}
+	];
+	
+	
+	
+	// create table view
+	for (var i = 0; i < data.length; i++ ) { data[i].color = '#000'; data[i].font = {fontWeight:'bold'} };
+	var tableViewOptions = {
+			data:data,
+			headerTitle:'View Process Details and Information',
+			backgroundColor:'transparent',
+			rowBackgroundColor:'white',
+			width:'100%',
+			//height:550,
+			top: 90
+		};
+	
+	
+		tableViewOptions.style = Titanium.UI.iPhone.TableViewStyle.GROUPED;
+	
+	var content = Ti.UI.createLabel({
+    	top    : 15,
+    	right  : 10,
+    	bottom : 10,
+    	left   : 10,
+    	color  : "#000000",
+    	height : "auto",
+    	text   : "Welcome to the PMP Fundamentals App.  This app contains useful PM Tutorials and other related information to the PMBOK 5th Edition.",
+    	backgroundColor : "transparent"
+    });
+	var tableview = Titanium.UI.createTableView(tableViewOptions);
+	
+	// create table view event listener
+	tableview.addEventListener('click', function(e)
+	{
+		if (e.rowData.test)
+		{
+			var ExampleWindow = require(e.rowData.test);
+			win = new ExampleWindow({title: e.rowData.title, containingTab: tab1, tabGroup: tabGroup});
+			tab1.open(win,{animated:true});
+		}
+	});
+	win1.add(content);
+	win1.add(tableview);
+	//tableview.focus();
+
+
+//
+// create controls tab and root window
+//
+var win2 = Titanium.UI.createWindow({  
+    title:'Donate',
+    backgroundColor:'#fff'
+});
+var tab2 = Titanium.UI.createTab({  
+    icon:'images/dollar-sign.png',
+    title:'Donate',
+    window:win2
+});
+
+var label2 = Titanium.UI.createLabel({
+	color:'#999',
+	text:'I am Window 2',
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	textAlign:'center',
+	width:'auto'
+});
+
+win2.add(label2);
+
+
+///
+
+var win3 = Titanium.UI.createWindow({  
+    title:'Practice Exam',
+    backgroundColor:'#fff'
+});
+var tab3 = Titanium.UI.createTab({  
+    icon:'images/write.png',
+    title:'Practice Exam',
+    window:win3
+});
+
+var label3 = Titanium.UI.createLabel({
+	color:'#999',
+	text:'I am Window 3',
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	textAlign:'center',
+	width:'auto'
+});
+
+win3.add(label3);
+
+//
+//  add tabs
+//
+tabGroup.addTab(tab1);  
+tabGroup.addTab(tab2); 
+tabGroup.addTab(tab3);  
+
+
+// open tab group
+tabGroup.open();
