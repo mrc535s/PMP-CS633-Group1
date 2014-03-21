@@ -2,7 +2,9 @@
 Titanium.UI.setBackgroundColor('#000');
 
 // create tab group
-var tabGroup = Titanium.UI.createTabGroup();
+var tabGroup = Titanium.UI.createTabGroup({
+	//activeTabBackgroundSelectedColor: "#CC0000"
+});
 
 
 //
@@ -10,7 +12,7 @@ var tabGroup = Titanium.UI.createTabGroup();
 //
 var win1 = Titanium.UI.createWindow({  
     title:'PMP Fundamentals',
-    backgroundColor:'#fff',
+    backgroundColor:'#DEDEDE',
     height: Ti.UI.SIZE
     
 });
@@ -18,7 +20,8 @@ var tab1 = Titanium.UI.createTab({
     icon:'images/home.png',
     title:'Home',
     window:win1,
-    height: Ti.UI.SIZE
+    height: Ti.UI.SIZE,
+    //backgroundColor: "#CC0000"
     //height:650
 });
 
@@ -28,7 +31,7 @@ var tab1 = Titanium.UI.createTab({
 	}
 	else
 	{
-		win1.backgroundColor = '#E0EEEE';
+		win1.backgroundColor = '#DEDEDE';
 	}
 	// create table view data object
 	var data = [
@@ -60,16 +63,23 @@ var tab1 = Titanium.UI.createTab({
 	
 	var content = Ti.UI.createLabel({
     	top    : 15,
-    	right  : 10,
-    	bottom : 10,
-    	left   : 10,
+    	left: 140,
+    	//bottom : 10,
+    	//left   : 10,
     	color  : "#000000",
     	height : "auto",
+    	width: "auto",
     	text   : "Welcome to the PMP Fundamentals App.  This app contains useful PM Tutorials and other related information to the PMBOK 5th Edition.",
     	backgroundColor : "transparent"
     });
 	var tableview = Titanium.UI.createTableView(tableViewOptions);
-	
+	var logo = Titanium.UI.createImageView({
+    width:'auto',
+    height:"auto",
+    left:10,
+    top:15,
+    image:'images/boston-university-logo.png'
+});
 	// create table view event listener
 	tableview.addEventListener('click', function(e)
 	{
@@ -80,6 +90,7 @@ var tab1 = Titanium.UI.createTab({
 			tab1.open(win,{animated:true});
 		}
 	});
+	win1.add(logo);
 	win1.add(content);
 	win1.add(tableview);
 	//tableview.focus();
@@ -138,6 +149,6 @@ tabGroup.addTab(tab1);
 tabGroup.addTab(tab2); 
 tabGroup.addTab(tab3);  
 
-
+//tabGroup.setActiveTabBackgroundSelectedColor('#CC0000');
 // open tab group
 tabGroup.open();
