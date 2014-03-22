@@ -35,13 +35,17 @@ var tab1 = Titanium.UI.createTab({
 	}
 	// create table view data object
 	var data = [
-		{title:'Initiating', hasChild:true, test:'common/initiating', header:'Process Groups'},
+		/*{title:'Plan Cost Management Plan', hasChild:true, test:'common/initiating', header:'Cost Processes'},
 		{title:'Planning', hasChild:true, test:'common/initiating'},
 		{title:'Executing', hasChild:true, test:'common/initiating'},
 		{title:'Monitoring/Controlling', hasChild:true, test:'common/initiating'},
-		{title:'Closing', hasChild:true, test:'common/initiating'},
+		{title:'Closing', hasChild:true, test:'common/initiating'},*/
+		{title:'Plan Cost Management Plan', hasChild:true, test:'common/initiating', header:'Cost Processes'},
+		{title: 'Determine Budget', hasChild:true, test:'common/initiating'},
+		{title: 'Control Costs', hasChild:true, test:'common/initiating'},
+		{title: 'Estimate Costs', hasChild:true, test:'common/estimate-costs'},
 		{title:'Glossary', hasChild:true, test:'common/initiating', header:'More Information'},
-		{title:'Process Images', hasChild:true, test:'common/initiating'}
+		{title:'References', hasChild:true, test:'common/initiating'}
 	];
 	
 	
@@ -69,7 +73,7 @@ var tab1 = Titanium.UI.createTab({
     	color  : "#000000",
     	height : "auto",
     	width: "auto",
-    	text   : "Welcome to the PMP Fundamentals App.  This app contains useful PM Tutorials and other related information to the PMBOK 5th Edition.",
+    	text   : "Below you will find information, tutorials, and references related to cost management to help prep you for the PMP exam. The tutorials are based off the PMBOK 5th edition",
     	backgroundColor : "transparent"
     });
 	var tableview = Titanium.UI.createTableView(tableViewOptions);
@@ -123,12 +127,12 @@ win2.add(label2);
 ///
 
 var win3 = Titanium.UI.createWindow({  
-    title:'Practice Exam',
+    title:'Practice Questions',
     backgroundColor:'#fff'
 });
 var tab3 = Titanium.UI.createTab({  
     icon:'images/write.png',
-    title:'Practice Exam',
+    title:'Practice Questions',
     window:win3
 });
 
