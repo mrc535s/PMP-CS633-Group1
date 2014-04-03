@@ -42,9 +42,9 @@ var tab1 = Titanium.UI.createTab({
 		{title:'Closing', hasChild:true, test:'common/initiating'},*/
 		{title:'Plan Cost Management Plan', hasChild:true, test:'common/initiating', header:'Cost Processes'},
 		{title: 'Determine Budget', hasChild:true, test:'common/initiating'},
-		{title: 'Control Costs', hasChild:true, test:'common/initiating'},
+		{title: 'Control Costs', hasChild:true, test:'common/control-costs'},
 		{title: 'Estimate Costs', hasChild:true, test:'common/estimate-costs'},
-		{title:'Glossary', hasChild:true, test:'common/initiating', header:'More Information'},
+		{title:'Glossary', hasChild:true, test:'common/glossary', header:'More Information'},
 		{title:'References', hasChild:true, test:'common/initiating'}
 	];
 	
