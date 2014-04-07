@@ -4,67 +4,23 @@ function tv_headers_filter(_args) {
 	});
 	// create table view data object
 	var data = [
-		{title:'Alan (click to change index)', hasChild:true, header:'A'},
-		{title:'Alice', hasDetail:true},
-		{title:'Alexander'},
-		{title:'Amos'},
-		{title:'Alonzo'},
-		{title:'Brad', header:'B'},
-		{title:'Brent'},
-		{title:'Billy'},
-		{title:'Brenda'},
-		{title:'Callie', header:'C'},
-		{title:'Cassie'},
-		{title:'Chris'},
-		{title:'Cameron'},
-		{title:'Don', header:'D'},
-		{title:'Dilbert'},
-		{title:'Deacon'},
-		{title:'Devin'},
-		{title:'Darin'},
-		{title:'Darcy'},
-		{title:'Erin', header:'E'},
-		{title:'Erica'},
-		{title:'Elvin'},
-		{title:'Edrick'},
-		{title:'Frank', header:'F'},
-		{title:'Fred'},
-		{title:'Fran'},
-		{title:'Felicity'},
-		{title:'George', header:'G'},
-		{title:'Gina'},
-		{title:'Gary'},
-		{title:'Herbert', header:'H'},
-		{title:'Henry'},
-		{title:'Harold'},
-		{title:'Ignatius', header:'I'},
-		{title:'Irving'},
-		{title:'Ivan'},
-		{title:'Dr. J', header:'J'},
-		{title:'Jefferson'},
-		{title:'Jenkins'},
-		{title:'Judy'},
-		{title:'Julie'},
-		{title:'Kristy', header:'K'},
-		{title:'Krusty the Clown'},
-		{title:'Klaus'},
-		{title:'Larry', header:'L'},
-		{title:'Leon'},
-		{title:'Lucy'},
-		{title:'Ludwig'},
-		{title:'Mary', header:'M'},
-		{title:'Mervin'},
-		{title:'Malcom'},
-		{title:'Mellon'},
-		{title:'Ned', header:'N'},
-		{title:'Nervous Eddie'},
-		{title:'Nelson'},
-		{title:'The Big O', header:'O'},
-		{title:'Orlando'},
-		{title:'Ox'},
-		{title:'Pluto', header:'P'},
-		{title:'Paris'},
-		{title:'Potsie'}
+		{title:'Actual cost (AC)', hasChild:true, data: 'The realized cost incurred for the work performed on an activity during a specific time period.', test:'common/glossary-terms/glossary-terms', header:'A'},
+		{title:'Cost baseline', hasChild:true, data: 'The cost baseline is compared with actual results to determine if a change, corrective action, or preventive action is necessary.', test:'common/glossary-terms/glossary-terms', header:'C'},
+		{title:'Cost management plan', hasChild:true, data: 'The cost management plan describes how the project costs will be managed and controlled', test:'common/glossary-terms/glossary-terms'},
+		{title:'Cost variance (CV)', hasChild:true, data: 'The amount of budget deficit or surplus at a given point in time, expressed as the difference between earned value and the actual cost. It is a measure of cost performance on a project.', test:'common/glossary-terms/glossary-terms', equation: "CV= EV − AC"},
+		{title:'Cost performance index (CPI)', hasChild:true, data: 'A measure of the cost efficiency of budgeted resources, expressed as a ratio of earned value to actual cost', test:'common/glossary-terms/glossary-terms', equation: 'CPI = EV/AC'},
+		{title:'Earned value (EV)', header:'E', hasChild:true, data: 'A measure of work performed expressed in terms of the budget authorized for that work', test:'common/glossary-terms/glossary-terms'},
+		{title:'Earned value management (EVM)', hasChild:true, data: 'A methodology that combines scope, schedule, and resource measurements to assess project performance and progress', test:'common/glossary-terms/glossary-terms'},
+		{title:'Earned value performance', hasChild:true, data: 'Compares the performance measurement baseline to actual schedule and cost performance', test:'common/glossary-terms/glossary-terms'},
+		{title:'Planned value (PV)', header:'P', hasChild:true, data: 'The authorized budget assigned to scheduled work.', test:'common/glossary-terms/glossary-terms'},
+		{title:'Project management software', hasChild:true, data: 'Used to monitor the three EVM dimensions (PV, EV, and AC), to display graphical trends, and to forecast a range of possible final project results.', test:'common/glossary-terms/glossary-terms'},
+		{title:'Reserve Analysis', header: 'R', hasChild:true, data: 'Used to monitor the status of contingency and management reserves for the project to determine if these reserves are still needed or if additional reserves need to be requested.', test:'common/glossary-terms/glossary-terms'},
+		{title:'Schedule performance index (SPI)', header: 'S', hasChild:true, data: 'A measure of schedule efficiency expressed as the ratio of earned value to planned value.', test:'common/glossary-terms/glossary-terms'},
+		{title:'Schedule variance (SV)', hasChild:true, data: 'A measure of schedule performance expressed as the difference between the earned value and the planned value.', test:'common/glossary-terms/glossary-terms'},
+		{title:'Trend analysis', header: 'T', hasChild:true, data: 'Examines project performance over time to determine if performance is improving or deteriorating.', test:'common/glossary-terms/glossary-terms'},
+		{title:'To-complete performance index (TCPI)', hasChild:true, data: 'A measure of the cost performance that is required to be achieved with the remaining resources in order to meet a specified management goal, expressed as the ratio of the cost to finish the outstanding work to the remaining budget.', equation: 'TCPI based on the BAC: (BAC – EV) / (BAC – AC\nTCPI based on the EAC: (BAC – EV) / (EAC – AC)', test:'common/glossary-terms/glossary-terms'},
+		{title:'Variance Analysis', header: 'V', hasChild:true, data: 'The explanation (cause, impact, and corrective actions) for cost (CV = EV – AC), schedule (SV = EV – PV), and variance at completion (VAC = BAC – EAC) variances', test:'common/glossary-terms/glossary-terms'},
+		{title:'Work performance data', header: 'W', hasChild:true, data: 'Information about project progress, such as which activities have started, their progress, and which deliverables have finished. Information also includes costs that have been authorized and incurred.', test:'common/glossary-terms/glossary-terms'}
 	];
 	
 	var search = Titanium.UI.createSearchBar();
@@ -77,15 +33,12 @@ function tv_headers_filter(_args) {
 	// create table view event listener
 	tableview.addEventListener('click', function(e)
 	{
-		if (e.index === 0){
-			tableview.index = index2;
+		if (e.rowData.test)
+		{
+			var ExampleWindow = require(e.rowData.test);
+			win = new ExampleWindow({title: e.rowData.title, containingTab: _args.containingTab, tabGroup: _args.tabGroup, data: e.rowData.data, equation1: e.rowData.equation});
+			_args.containingTab.open(win,{animated:true});
 		}
-		// event data
-		var index = e.index;
-		var section = e.section;
-		var row = e.row;
-		var rowdata = e.rowData;
-		Titanium.UI.createAlertDialog({title:'Table View',message:'row ' + row + ' index ' + index + ' section ' + section  + ' row data ' + rowdata}).show();
 	});
 	// set filters
 	var index = [

@@ -137,11 +137,14 @@ var tab3 = Titanium.UI.createTab({
 });
 
 var label3 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 3',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+	top    : 15,
+    	left: 15,
+    	//bottom : 10,
+    	//left   : 10,
+    	color  : "#000000",
+    	height : "auto",
+    	width: "auto",
+	text:'1. Question 1 text - Lorem ipsum test question goes here?\nAnswer 1\n\n2. Question 2 - Lorem ipsum test question goes here?\nAnswer 2\n\nQuestion 3 Text - Lorem ipsum test question goes here?\nAnswer3',
 });
 
 win3.add(label3);
