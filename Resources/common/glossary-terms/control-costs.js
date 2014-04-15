@@ -86,12 +86,12 @@ var win1 = Titanium.UI.createWindow({
 	for (var i = 0; i < data.length; i++ ) { data[i].color = '#000'; data[i].font = {fontWeight:'bold'} };
 	var tableViewOptions = {
 			data:data,
-			headerTitle:'Controlling Cost Details',
+			headerTitle:'Estimate Cost Details',
 			backgroundColor:'transparent',
 			rowBackgroundColor:'white',
 			width:'100%',
 			//height:550,
-			top: 100
+			top: 145
 		};
 	
 	
