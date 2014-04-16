@@ -173,6 +173,10 @@ questions[3]="Which of the following is NOT an input of the Plan Cost Management
 questions[4]="Which of the tools and techniques of the Plan Cost Management process uses historical information from prior similar projects and adapts it appropriately to the current project?";
 questions[5]="The _______________ plan is a component of the project management plan and describes how the project costs will be planned, structured, and controlled.";
 questions[6]="Which of the following documents can be used to guide all the work in both project executing and project monitoring and controlling phase of a project?";
+questions[7]="The formula EAC = AC + BAC  - EV is most appropriately used in a which situation?";
+questions[8]="The Control Costs process input of “work performance data” is best described as:";
+questions[9]="What is the definition of trend analysis?";
+questions[10]="What is the bottom-up EAC method when you consider the project manager’s estimate to complete?";
 
 var answers = Array();
 
@@ -211,6 +215,25 @@ answers[25] = "B - Risk Plan";
 answers[26] = "C - Project QA Plan";
 answers[27] = "D - Project Charter";
 
+answers[28] = "A - When you consider the project manager’s estimate to complete";
+answers[29] = "B - When you consider that variances are not expected to occur for the remainder of the project";
+answers[30] = "C - When you take the project’s cost and schedule efficiency into consideration";
+answers[31] = "D - When you take the project’s cost efficiency into consideration";
+
+answers[32] = "A - Statistics and information that reflect project activities, their progress, cost, and which deliverables have finished.";
+answers[33] = "B - Money that must be available to the project in incremental amounts in order to finance the work";
+answers[34] = "C - Document that contains a time-phased budget used in assessing the cost performance of completed project work";
+answers[35] = "D - Organizational policies that govern the way costs are controlled in a performing organization";
+
+answers[36] = "A - Compares actual project performance to planned performance";
+answers[37] = "B - Examines project performance over time to determine whether performance is improving or deteriorating";
+answers[38] = "C - Incorporates project scope, cost, and schedule measures to objectively measure project performance and progress";
+answers[39] = "D - Contrast previous and current project performance";
+
+answers[40] = "A - EAC = BAC  x Cumulative SPI";
+answers[41] = "B - EAC = BAC  x Cumulative CPI";
+answers[42] = "C - EAC = AC + Bottom-up ETC";
+answers[43] = "D - EAC = AC + BAC + EV";
 
 explanations[0] = "The first step in creating a cost baseline is generally aggregating costs to determine the likely cost of each component in the project’s work breakdown structure, or WBS";
 explanations[1] = "The cost baseline and the requirements traceability matrix are not inputs to the Determine Budget process. ";
@@ -219,6 +242,12 @@ explanations[3] = "Project Funding is not an input of the Plan Cost Management p
 explanations[4] = "Explanation: Expert judgment, guided by historical information, provides valuable insight about the environment and information from prior similar projects. Expert judgment can also suggest whether to combine methods and how to reconcile differences between them. (PMBOK Page no, 198)";
 explanations[5] = "The cost management plan is a component of the project management plan and describes how the project costs will be planned, structured, and controlled. (PMBOK page no, 198)";
 explanations[6] = "The Project Management Plan can be used to guide all the work in both project executing and project monitoring and controlling phase of a project.";
+explanations[7] = "PMBOK 5TH Edition section 7.4.2.2 Forecasting";
+explanations[8] = "PMBOK 5TH Edition section 7.4.1.3 Work Performance Data";
+explanations[9]="PMBOK 5TH Edition section 7.4.2.4 Performance Reviews";
+explanations[10]="PMBOK 5TH Edition section 7.4.2.2 Forecasting";
+
+
 addQuestion(questions, answers, win3, explanations, scrollView);
 
 
@@ -264,7 +293,7 @@ function addQuestion(questions, answers, win, explanations, scrollView)
     
           scrollView.add(b[answertracker]);
           
-      if (((i==0) && (t==3)) || ((i==1) && (t==0)) || ((i==2) && (t==0)) || ((i==3) && (t==2)) || ((i==4) && (t==2)) || ((i==5) && (t==1)) || ((i==6) && (t==0)))
+      if (((i==0) && (t==3)) || ((i==1) && (t==0)) || ((i==2) && (t==0)) || ((i==3) && (t==2)) || ((i==4) && (t==2)) || ((i==5) && (t==1)) || ((i==6) && (t==0)) || ((i==7) && (t==1)) || ((i==8) && (t==0)) || ((i==9) && (t==1)) || ((i==10) && (t==2)))
       {
       	
  		var p = 0;
